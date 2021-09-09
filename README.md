@@ -1,53 +1,58 @@
-# CakePHP Application Skeleton
+# CakePHP Application for Sending a test Mail from api
 
-![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+A test app for sending an email using the API as a data source.
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 4.x.
+## Assignemt
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+Create a tool that reads two API responses and sends an email.
+The email should contain the posts written by every user. Please note that you should take only the first 3 posts.
+If you want, you can add a result page too using any tool you want.
+
+E.g. 
+John Smith has written:
+- Title 1
+- Title 2
+- Title 3
+
+Paul Johnson has written:
+- Title 1
+- Title 2
+- Title 3
+
+- You can get the user list from this service: https://jsonplaceholder.typicode.com/users
+- You can get the post list from this service: https://jsonplaceholder.typicode.com/posts
+- To send email you can use https://mailtrap.io/ that gives you smtp credentials to send mail and catches all your attemps or you can use any service you want.
+
+## Account mailtrap
+
+The account used for mailtrap is:
+
+username : sendmail@zooape.net
+
+password : sendmail
 
 ## Installation
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
-
-If Composer is installed globally, run
+1. Clone or download the source code and run in the app folder
 
 ```bash
-composer create-project --prefer-dist cakephp/app
+docker-compose up
 ```
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+Then visit `http://localhost:8082` to see application
+
+## Usage
+
+1. Visit `http://localhost:8082`
+2. Choose a number of posts to be sended or leave the default value
+3. Click on "Invia Email" button
+4. The body of the email will be rendered.
+
+  OR via CLI
 
 ```bash
-composer create-project --prefer-dist cakephp/app myapp
+docker-compose exec php-fpm bin/cake SendMail [3]
 ```
+You can specify the number of posts to send in the email.
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
 
-```bash
-bin/cake server -p 8765
-```
-
-Then visit `http://localhost:8765` to see the welcome page.
-
-## Update
-
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit the environment specific `config/app_local.php` and setup the 
-`'Datasources'` and any other configuration relevant for your application.
-Other environment agnostic settings can be changed in `config/app.php`.
-
-## Layout
-
-The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
