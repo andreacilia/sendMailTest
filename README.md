@@ -46,7 +46,7 @@ Then visit `http://localhost:8082` to see application
 1. Visit `http://localhost:8082`
 2. Choose a number of posts to be sended or leave the default value
 3. Click on "Invia Email" button
-4. The body of the email will be rendered.
+4. An email will be send to mailtrap and the body of the email will be rendered.
 
   OR via CLI
 
